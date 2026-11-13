@@ -14,9 +14,11 @@ from pathlib import Path
 import os
 import dj_database_url
 from django.core.exceptions import ImproperlyConfigured
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / '.env')
 
 
 # Quick-start development settings - unsuitable for production
@@ -24,7 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+RENDER_HOST = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+DEBUG = os.environ.get('DEBUG', 'False' if RENDER_HOST else 'True') == 'True'
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 if not SECRET_KEY:
@@ -33,7 +36,6 @@ if not SECRET_KEY:
     SECRET_KEY = 'django-insecure-cle-de-developpement-uniquement'
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-RENDER_HOST = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_HOST:
     ALLOWED_HOSTS.append(RENDER_HOST)
 

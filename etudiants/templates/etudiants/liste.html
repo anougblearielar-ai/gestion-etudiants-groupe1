@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des étudiants</title>
+</head>
+<body>
+    <h1>Liste des étudiants</h1>
+
+    <a href="{% url 'ajouter_etudiant' %}">
+        Ajouter un étudiant
+    </a>
+
+    <form method="GET">
+        <label>Filtrer par filière :</label>
+
+        <select name="filiere">
+            <option value="">Toutes les filières</option>
+
+            {% for filiere in filieres %}
+                <option value="{{ filiere.id }}"
+                    {% if filiere_selectionnee == filiere.id|stringformat:"s" %}selected{% endif %}>
+                    {{ filiere }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Filtrer</button>
+    </form>
+
+    <hr>
+
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Matricule</th>
+            <th>Filière</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for etudiant in etudiants %}
+        <tr>
+            <td>{{ etudiant.nom }}</td>
+            <td>{{ etudiant.prenom }}</td>
+            <td>{{ etudiant.matricule }}</td>
+            <td>{{ etudiant.filiere }}</td>
+            <td>
+                <a href="{% url 'detail_etudiant' etudiant.id %}">Détails</a>
+                <a href="{% url 'modifier_etudiant' etudiant.id %}">Modifier</a>
+                <a href="{% url 'supprimer_etudiant' etudiant.id %}">Supprimer</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">Aucun étudiant enregistré.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

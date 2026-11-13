@@ -1,15 +1,14 @@
 from django.contrib import admin
-from .models import Filiere, Etudiant
+from .models import Etudiant, Filiere
 
 
 @admin.register(Filiere)
 class FiliereAdmin(admin.ModelAdmin):
-    list_display = ("nom", "description")
-    search_fields = ("nom",)
+    list_display = ('id', '__str__')
 
 
 @admin.register(Etudiant)
 class EtudiantAdmin(admin.ModelAdmin):
-    list_display = ("matricule", "nom", "prenom", "niveau", "filiere")
-    list_filter = ("filiere", "niveau")
-    search_fields = ("nom", "prenom", "matricule")
+    list_display = ('nom', 'prenom', 'matricule', 'niveau', 'filiere')
+    list_filter = ('filiere', 'niveau')
+    search_fields = ('nom', 'prenom', 'matricule')

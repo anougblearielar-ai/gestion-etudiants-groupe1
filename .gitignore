@@ -3,3 +3,15 @@ __pycache__/
 *.pyc
 .env
 venv/
+# Environnement virtuel
+.venv/
+
+# Fichiers Python temporaires
+__pycache__/
+*.py[cod]
+
+# Base de données locale
+db.sqlite3
+
+# Variables d'environnement
+.env

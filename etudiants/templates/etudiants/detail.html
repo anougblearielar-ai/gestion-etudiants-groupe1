@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Détail étudiant</title>
+</head>
+<body>
+    <h1>Informations de l'étudiant</h1>
+
+    <p><strong>Nom :</strong> {{ etudiant.nom }}</p>
+    <p><strong>Prénom :</strong> {{ etudiant.prenom }}</p>
+    <p><strong>Matricule :</strong> {{ etudiant.matricule }}</p>
+    <p><strong>Niveau :</strong> {{ etudiant.niveau }}</p>
+    <p><strong>Filière :</strong> {{ etudiant.filiere }}</p>
+
+    <a href="{% url 'liste_etudiants' %}">
+        Retour à la liste
+    </a>
+</body>
+</html>

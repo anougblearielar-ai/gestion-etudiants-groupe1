@@ -1,0 +1,48 @@
+[
+  {
+    "model": "etudiants.filiere",
+    "pk": 1,
+    "fields": {
+      "nom": "INFORMATIQUE",
+      "description": "On fait que de l'informatique"
+    }
+  },
+  {
+    "model": "etudiants.filiere",
+    "pk": 2,
+    "fields": {
+      "nom": "GESTION",
+      "description": "On ne fait que g\u00e9rer"
+    }
+  },
+  {
+    "model": "etudiants.filiere",
+    "pk": 3,
+    "fields": {
+      "nom": "RESEAUX",
+      "description": "On ne fait que des r\u00e9seaux"
+    }
+  },
+  {
+    "model": "etudiants.etudiant",
+    "pk": 1,
+    "fields": {
+      "nom": "BINI",
+      "prenom": "JESSICA COLOMBE",
+      "matricule": "25-ESATIC0729YJ",
+      "niveau": "L2",
+      "filiere": 1
+    }
+  },
+  {
+    "model": "etudiants.etudiant",
+    "pk": 2,
+    "fields": {
+      "nom": "CLARK",
+      "prenom": "BOADI ISRAEL",
+      "matricule": "25-ESATIC0704AB",
+      "niveau": "L2",
+      "filiere": 1
+    }
+  }
+]

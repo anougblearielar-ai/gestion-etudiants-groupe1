@@ -1,0 +1,72 @@
+
+{% extends 'etudiants/base.html' %}
+
+{% block title %}Liste des étudiants{% endblock %}
+
+{% block content %}
+
+<h2>Liste des étudiants</h2>
+
+<a href="{% url 'ajouter_etudiant' %}">
+    Ajouter un étudiant
+</a>
+
+<hr>
+
+<form method="GET">
+    <label for="filiere">Filtrer par filière :</label>
+
+    <select name="filiere" id="filiere">
+        <option value="">Toutes les filières</option>
+
+        {% for filiere in filieres %}
+            <option value="{{ filiere.id }}"
+                {% if request.GET.filiere == filiere.id|stringformat:"s" %}
+                    selected
+                {% endif %}>
+                {{ filiere.nom }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Filtrer</button>
+</form>
+
+<table border="1" cellpadding="8">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Matricule</th>
+            <th>Niveau</th>
+            <th>Filière</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for etudiant in etudiants %}
+            <tr>
+                <td>{{ etudiant.nom }}</td>
+                <td>{{ etudiant.prenom }}</td>
+                <td>{{ etudiant.matricule }}</td>
+                <td>{{ etudiant.get_niveau_display }}</td>
+                <td>{{ etudiant.filiere.nom }}</td>
+
+                <td>
+                    <a href="{% url 'detail_etudiant' etudiant.id %}">Voir</a>
+                    |
+                    <a href="{% url 'modifier_etudiant' etudiant.id %}">Modifier</a>
+                    |
+                    <a href="{% url 'supprimer_etudiant' etudiant.id %}">Supprimer</a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="6">Aucun étudiant enregistré.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

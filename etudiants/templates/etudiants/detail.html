@@ -1,0 +1,20 @@
+
+{% extends 'etudiants/base.html' %}
+
+{% block title %}Détails de l'étudiant{% endblock %}
+
+{% block content %}
+
+<h2>Détails de l'étudiant</h2>
+
+<p><strong>Nom :</strong> {{ etudiant.nom }}</p>
+<p><strong>Prénom :</strong> {{ etudiant.prenom }}</p>
+<p><strong>Matricule :</strong> {{ etudiant.matricule }}</p>
+<p><strong>Niveau :</strong> {{ etudiant.get_niveau_display }}</p>
+<p><strong>Filière :</strong> {{ etudiant.filiere.nom }}</p>
+
+<a href="{% url 'modifier_etudiant' etudiant.id %}">Modifier</a>
+
+<a href="{% url 'liste_etudiants' %}">Retour à la liste</a>
+
+{% endblock %}

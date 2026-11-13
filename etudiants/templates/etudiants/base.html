@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Gestion des étudiants{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'etudiants/style.css' %}">
+</head>
+<body>
+
+    <header>
+        <h1>Gestion des étudiants</h1>
+
+        <nav>
+            <a href="{% url 'liste_etudiants' %}">Accueil</a>
+            <a href="{% url 'ajouter_etudiant' %}">Ajouter un étudiant</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>Application de gestion des étudiants</p>
+    </footer>
+
+</body>
+</html>
